@@ -1,2 +1,2 @@
 # codehistory
-This repository serves to document my best work from 
+This repository serves to document my best project-based work from college and high school
