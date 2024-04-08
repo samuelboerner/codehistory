@@ -1,3 +1,7 @@
+"""
+IGNORE -- BOILERPLATE
+
+
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_session import Session
@@ -30,6 +34,7 @@ Session(app)
 
 # configure CS50 Library to use SQLite database
 db = SQL("sqlite:///finance.db")
+"""
 
 @app.route("/")
 @login_required
