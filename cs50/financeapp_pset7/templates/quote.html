@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('quote') }}" method="post">
+        <fieldset>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="quote" placeholder="Ex. AAPL" type="text" required="required" pattern="[A-Za-z\d.-]+" title="E.G. AAPL, BRK-B, HM-B.ST, 005930.KS"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Quote</button>
+            </div>
+        </fieldset>
+    </form>
+    {% if htmlinfo == 0 %}
+    <img alt="These are not the stocks you are looking for" src="https://i.imgflip.com/1p8tzy.jpg"></img>
+    <p><font size=3 color="red">Uh oh! Looks like that stock doesn't exist!</font></p>
+    {% elif request.method == "POST" %}
+    <p><font size=7>Company: {{ htmlinfo["name"] }}</font></p>
+    <p><font size=6>Ticker: {{ htmlinfo["symbol"] }}</font></p>
+    <p><font size=6>Value: {{ htmlinfo["price"] }}</font></p>
+    {% endif %}
+{% endblock %}

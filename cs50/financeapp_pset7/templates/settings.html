@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+<div style="float:left;text-align:left;">
+    <div>
+        <h3 style="border-bottom: 2px solid #777777;"><font face="sans-serif ms" color="#777777">Reset Password</font></h3>
+        <form action="{{ url_for('settings') }}" method="post">
+            <div class="form-group">
+                <input class="form-control" name="password" placeholder="Password" type="password" required="required"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="confirmpassword" placeholder="Confirm Password" type="password" required="required"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" name="btn" value="s1" type="submit">Reset</button>
+            </div>
+            {% if info == 0 %}
+                <p style="color: blue">Password Reset!</p>
+            {% endif %}
+            {% if info == 1 %}
+                <p style="color: red">Invalid Password</p>
+            {% endif %}
+        </form>
+    </div>
+    <div>
+        <h3 style="border-bottom: 2px solid #777777;"><font face="sans-serif ms" color="#777777">Deactivate Account</font></h3>
+        <form action="{{ url_for('settings') }}" method="post">
+            <div class="form-group">
+                <label for="rly">Are You Sure?</label>
+                <input class="form-control" name="rly" type="text" required="required"/>
+            </div>
+            <p>Type: Yes</p>
+            <div class="form-group">
+                <label for="rlyrly">Are You Really Sure?</label>
+                <input class="form-control" name="rlyrly" type="text" required="required"/>
+            </div>
+            <p>Type: Really Sure</p>
+            <div class="form-group">
+                <label for="rlyrlyrly">Are You REALLY REALLY SURE???</label>
+                <input class="form-control" name="rlyrlyrly" type="text" required="required"/>
+            </div>
+            <p>Type: REALLY REALLY SURE</p>
+            <div class="form-group">
+                <button class="btn btn-default" name="btn" value="s2" type="submit">Deactivate</button>
+            </div>
+            {% if info == 2 %}
+                <p style="color: red">Seems like you're not sure...</p>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

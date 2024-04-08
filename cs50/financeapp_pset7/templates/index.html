@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div style = "padding: 10px; display:inline-block; margin-left: 80%; margin-bottom:1.25%; border-style: solid; border-width: 1px; border-radius: 5px; border-color: #e7e7e7; background-color: #f8f8f8;">
+        Cash on Hand: {{ cash }}
+    </div>
+    <p>
+        <font size=7>Welcome to <span style="color: #537fbe;">C</span><span style="color: #ea433b;">$</span><span style="color: #f5b82e;">5</span><span style="color: #2e944b;">0</span> <span style="color: #ea433b;">Finance</span>!!!</font>
+    </p>
+    <p style="margin-left:55%">
+        Last Updated: UTC {{ time }}
+    </p>
+    <table border=1 style="margin-left:auto; margin-right:auto;">
+        <tr>
+            <th id="td2" style="text-align:left;">Stock</th>
+            <th id="td2" style="text-align:left;">Shares</th>
+            <th id="td2" style="text-align:left;">Current Price</th>
+            <th id="td2" style="text-align:left;">Total Value</th>
+            <th id="td2" style="text-align:left;">Gain/Loss</th>
+        </tr>
+        {% for i in info %}
+        <tr>
+            <td id="td2" style="text-align:left;">{{ i["symbol"] }}</td>
+            <td id="td2" style="text-align:left;">{{ i["shares"] }}</td>
+            <td id="td2" style="text-align:left;">{{ i["price"] }}</td>
+            <td id="td2" style="text-align:left;">{{ i["totalvalue"] }}</td>
+            <td id="td2" style="text-align:left;">poop</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

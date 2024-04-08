@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <div style = "padding: 10px; display:inline-block; margin-left: 80%; border-style: solid; border-width: 1px; border-radius: 5px; border-color: #e7e7e7; background-color: #f8f8f8;">
+        Cash on Hand: {{ cash }}
+    </div>
+    <form action="{{ url_for('buy') }}" method="post">
+        Symbol:
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Ex. AAPL" type="text" required="required" pattern="[A-Za-z\d.-]+" title="E.G. AAPL, BRK-B, HM-B.ST, 005930.KS"/>
+        </div>
+        {% if show == 0 %}
+        <p style="color: red">Stock doesn't exist...</p>
+        {% endif %}
+        Number of Shares:
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="sharenum" placeholder="Ex. 10" type="text" required="required" pattern="^[1-9][0-9]*$" title="Must be Positive Integer"/>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-default" type="submit">Buy</button>
+        </div>
+        {% if show == 1 %}
+        <p style="color: red">Sorry, but you cannot afford that...</p>
+        {% endif %}
+        {% if show is mapping %}
+        <p style="color: blue">You have {{ show["sharenum"] }} more share/s in {{ show["name"] }}<br>Enjoy!</p>
+        {% endif %}
+    </form>
+{% endblock %}

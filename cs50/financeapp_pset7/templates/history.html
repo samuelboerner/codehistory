@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table border=1 style="margin-left:auto; margin-right:auto;">
+        <tr>
+            <th id="td1" style="text-align:left;">Buy/Sell</th>
+            <th id="td1" style="text-align:left;">Symbol</th>
+            <th id="td1" style="text-align:left;">Stock Price</th>
+            <th id="td1" style="text-align:left;">Shares</th>
+            <th id="td1" style="text-align:left;">Time(UTC)</th>
+        </tr>
+        {% for i in info %}
+        <tr style="background-color: #f8f8f8;">
+            <td id="td1" style="text-align:left;">{{ "Buy" if i["shares"] > 0 else "Sell" }}</td>
+            <td id="td1" style="text-align:left;">{{ i["symbol"] }}</td>
+            <td id="td1" style="text-align:left;">{{ i["stkprice"] }}</td>
+            <td id="td1" style="text-align:left;">{{ i["shares"] if i["shares"] > 0 else -i["shares"] }}</td>
+            <td id="td1" style="text-align:left;">{{ i["time"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
